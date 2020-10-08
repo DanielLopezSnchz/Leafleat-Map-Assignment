@@ -1,0 +1,27 @@
+---
+title: "Top 5 Universities in Guatemala"
+author: "Daniel Arturo Lopez Sanchez"
+date: "10/8/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+1. Universidad Francisco Marroquín
+2. Universidad del Valle de Guatemala
+3. Universidad de San Carlos de Guatemala
+4. Universidad Rafael Landivar
+5. Universidad Galileo
+```{r, echo=FALSE, warning=FALSE}
+library(leaflet)
+points <- data.frame(lat=c(14.606963,14.603741,14.587568,14.594789,14.609392),
+                     lng=c(-90.505744,-90.489283,-90.553004,-90.483224,-90.505779))
+logo <- makeIcon(iconUrl = "https://static.thenounproject.com/png/81335-200.png",
+                 iconWidth = 31*215/230, iconHeight = 31,
+                 iconAnchorX = 31*215/230/2, iconAnchorY = 16)
+Ranking_url <- "<a href='https://www.languagecourse.net/es/universidades--guatemala'> Ranking site </a>"
+
+points %>% leaflet() %>%
+  addTiles() %>% addMarkers(icon = logo, popup = Ranking_url)
+```
